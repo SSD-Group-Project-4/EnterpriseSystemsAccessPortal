@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <div id="welcome-message" class="section">
+        <div class="container">
+            <h2>Welcome to Our Enterprise Systems Access Portal</h2>
+            <p>This portal offers centralized access to all the resources needed for managing system access in enterprise system courses. From handling student data and course software requirements to maintaining operational playbooks and generating checklists, everything you need is in one place.</p>
+
+            <div class="box-row">
+                <a href="student-management.html" class="box">
+                    <img src="icons/Students.png" alt="Students">
+                    <h3>Students</h3>
+                    <p>The Student Management Feature simplifies roster handling with easy upload, viewing, comparison, and data export</p>
+                </a>
+                <a href="courses.html" class="box">
+                    <img src="icons/Courses.png" alt="Courses">
+                    <h3>Courses</h3>
+                    <p>The Course and Software Requirements Feature enables adding, viewing, and updating courses and their software needs</p>
+                </a>
+                <a href="playbooks.html" class="box">
+                    <img src="icons/Playbook.png" alt="Playbooks">
+                    <h3>Playbooks</h3>
+                    <p>The Playbook Feature allows adding, viewing, and editing of operational playbooks for managing system access processes</p>
+                </a>
+                <a href="checklists.html" class="box">
+                    <img src="icons/Checklist.png" alt="Checklists">
+                    <h3>Checklists</h3>
+                    <p>The Checklist Feature generates and downloads checklists to be sent to professors, detailing student access to specific software.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+</script>
+</body>
+</html>
