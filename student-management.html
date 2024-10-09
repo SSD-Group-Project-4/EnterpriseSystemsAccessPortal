@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management - Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <div id="student-management-message" class="section">
+        <div class="container">
+            <h2>Student Roster Management</h2>
+            <p>This feature streamlines student roster management by providing tools for easy uploading of new rosters, comparison, and exporting data. Users can quickly browse and search current rosters, enhancing efficiency and accuracy in managing student information.</p>
+
+            <div class="box-row">
+                <a href="upload-student-roster.html" class="box">
+                    <img src="icons/UploadRoster.png" alt="Upload Roster">
+                    <h3>Upload Student Roster</h3>
+                    <p>Upload new student rosters.</p>
+                </a>
+                <a href="view-roster.html" class="box">
+                    <img src="icons/ViewRoster.png" alt="View Roster">
+                    <h3>View Roster</h3>
+                    <p>Browse and search through current student rosters.</p>
+                </a>
+                <a href="export-roster.html" class="box">
+                    <img src="icons/ExportRoster.png" alt="Export Roster">
+                    <h3>Export Roster</h3>
+                    <p>Download student rosters.</p>
+                </a>
+                <a href="compare-roster.html" class="box">
+                    <img src="icons/CompareRoster.png" alt="Compare Rosters">
+                    <h3>Compare Student Rosters</h3>
+                    <p>Compare different rosters.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(function(){
+            $("#header-nav-placeholder").load("HomeNavigation.html");
+        });
+</script>
+</body>
+</html>
