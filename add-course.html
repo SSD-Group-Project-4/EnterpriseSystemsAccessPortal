@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <section id="add-course-section">
+      <div class="container">
+        <h2>Add Course</h2>
+        <p>Add a new course by entering the below course details and selecting required software.</p>
+        <form id="add-course-form">
+          <div class="form-group">
+            <label for="course-number">Course Number:</label>
+            <input type="text" id="course-number" name="course-number" required style="width: 97%;"> 
+            
+          </div>
+          <div class="form-group">
+            <label for="course-name">Course Name:</label>
+            <input type="text" id="course-name" name="course-name" required style="width: 97%;">
+             
+          </div>
+          <div class="form-group">
+            <label for="course-description">Course Description:</label>
+            <textarea id="course-description" name="course-description" rows="4" style="width: 98%; height: 50px;"></textarea> 
+          </div>
+        
+          <div class="accordion">
+            <label>Select Software:</label>
+          </div>
+        
+          <button type="submit">Submit</button>
+          
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+        // Software categories and options
+    const softwareCategories = {
+        "SAS Products": ["SAS EG", "SAS EM", "SAS Viya"],
+        "SAP Products": ["SAP HANA", "SAP S/4Hana", "SAP Solution Manager"],
+        "Database Products": ["SQL Server (Read)", "SQL Server (Individual DB)", "Teradata"],
+        "Programming Products": ["Visual Studio", "JupyterHub Access (Azure)"],
+        "Visualization Products": ["Tableau", "Power BI"]
+    };
+
+    // Dynamically generate accordion sections
+    const accordion = document.querySelector('.accordion');
+    for (const [category, products] of Object.entries(softwareCategories)) {
+        accordion.innerHTML += `
+            <div class="accordion-item">
+                <h4 class="accordion-header">${category}</h4>
+                <div class="accordion-content">
+                    ${products.map(product => `<label><input type="checkbox" name="software" value="${product}"> ${product}</label><br>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Add accordion toggle functionality
+    accordion.addEventListener('click', function (e) {
+        if (e.target.classList.contains('accordion-header')) {
+            const content = e.target.nextElementSibling;
+            content.classList.toggle('active');
+        }
+    });
+
+
+   // Add event listener for form submission
+    const form = document.getElementById('add-course-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents the default form submission
+      
+        // Custom confirmation dialog
+        let confirmationMessage = "Success!\n\nThe course has been added successfully.";
+        if (window.confirm(confirmationMessage)) {
+            // Proceed after user acknowledges
+            form.reset();
+        }
+    });
+
+</script>
+</body>
+</html>

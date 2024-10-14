@@ -265,3 +265,33 @@ body {
                   margin-right: 15px;
                   font-weight: normal; /* Reset font weight for radio labels */
               }
+              .accordion-item {
+                margin-bottom: 10px;
+            }
+            .accordion-header {
+                background-color: #f1f1f1;
+                padding: 10px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+            }
+            .accordion-content {
+                display: none;
+                flex-direction: column; /* Stack items vertically */
+            }
+            
+            .accordion-content label {
+                display: flex;
+                align-items: center; /* Center the checkbox and text vertically */
+                margin-bottom: 5px; /* Space between checkboxes */
+            }
+            
+            .accordion-content input[type="checkbox"] {
+                margin-right: 10px; /* Space between checkbox and label text */
+                /* Adjust size if needed */
+                width: 15px; /* Make checkbox larger */
+                height: 15px; /* Make checkbox larger */
+            }
+            .accordion-content.active {
+                display: block;
+            }
+           
