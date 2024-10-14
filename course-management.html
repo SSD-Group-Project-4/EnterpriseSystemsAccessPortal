@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management - Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <div id="course-management-message" class="section">
+        <div class="container">
+            <h2>Course Management</h2>
+            <p>The Course and Software Requirements feature allows users to effortlessly add, view, and update courses alongside their software requirements. This functionality enhances the ability to search for and manage course information efficiently, ensuring users can quickly navigate and access their course-related data.</p>
+
+            <div class="box-row">
+                <a href="add-course.html" class="box">
+                    <img src="icons/AddCourses.png" alt="Add Courses">
+                    <h3>Add Courses</h3>
+                    <p>Easily create new courses with their corresponding software requirements.</p>
+                </a>
+                <a href="view-courses.html" class="box">
+                    <img src="icons/ViewCourses.png" alt="View Courses">
+                    <h3>View/Edit Courses</h3>
+                    <p>Access and modify existing courses to keep your information up to date.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+</script>
+</body>
+</html>
