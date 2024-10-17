@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal - Interactive FAQ</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+    <style>
+        .accordion-item {
+            transition: all 0.3s ease;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-content.active {
+            max-height: 300px;
+        }
+        .feedback-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .feedback-button {
+            background-color: #9d2235; /* UARK red */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .feedback-button:hover {
+            background-color: #7c1a29; /* Darker shade of UARK red */
+            transform: translateY(-2px);
+        }
+        .feedback-button:active {
+            transform: translateY(0);
+        }
+        .feedback-button.helpful {
+            background-color: #2c3e50; /* Dark blue */
+        }
+        .feedback-button.not-helpful {
+            background-color: #34495e; /* Slightly lighter blue */
+        }
+        .feedback-response {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <section id="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about Enterprise Systems and the platform.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header">What is Enterprise systems?</h4>
+                    <div class="accordion-content">
+                        <p>An <strong>Enterprise System</strong> is a large-scale software that is used to manage, track, and control complex business operations.</p>
+                        <div class="feedback-buttons">
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h4 class="accordion-header">How do I report a technical issue with the platform?</h4>
+                    <div class="accordion-content">
+                        <p>Contact the IT Help Desk or create a ticket at <a href="http://help.uark.edu">help.uark.edu</a>.</p>
+                        <div class="feedback-buttons">
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer style="background-color: #9d2235; color: white; text-align: center; padding: 1rem 0; position: fixed; bottom: 0; width: 100%;">
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+
+    // Enhanced accordion toggle functionality with smooth animation
+    document.querySelector('.accordion').addEventListener('click', function (e) {
+        if (e.target.classList.contains('accordion-header')) {
+            const content = e.target.nextElementSibling;
+            content.classList.toggle('active');
+            e.target.classList.toggle('active');
+            
+            // Smooth scroll to the opened accordion item
+            if (content.classList.contains('active')) {
+                setTimeout(() => {
+                    e.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        }
+    });
+
+    // Feedback functionality
+    function provideFeedback(button, type) {
+        const feedbackButtons = button.parentElement;
+        const responseElement = document.createElement('div');
+        responseElement.className = 'feedback-response';
+        responseElement.textContent = type === 'helpful' ? 'Thanks for your feedback!' : 'We\'ll work on improving this answer.';
+        responseElement.style.color = type === 'helpful' ? '#27ae60' : '#e67e22';
+        feedbackButtons.innerHTML = '';
+        feedbackButtons.appendChild(responseElement);
+        
+        // Here you would typically send this feedback to a server
+        console.log(`User found the answer ${type}`);
+    }
+</script>
+</body>
+</html>
