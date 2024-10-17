@@ -21,11 +21,11 @@
         .container {
             width: 100%;
             max-width: 400px;
-            height: 330px; /* Set a fixed height for the login box */
+            height: 330px;
             display: flex;
             flex-direction: column;
             border-radius: 10px;
-            overflow: hidden; /* Ensures the background colors stay within the rounded corners */
+            overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -53,16 +53,24 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center contents horizontally */
+            align-items: center;
+        }
+
+        /* Form styling */
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Styling the form groups (email and password fields) */
         .form-group {
             margin-bottom: 15px;
-            display: flex; /* Use flexbox */
-            flex-direction: column; /* Stack children vertically */
-            align-items: center; /* Center horizontally */
-            width: 100%; /* Ensure it takes full width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         /* Styling the labels for email and password fields */
@@ -72,18 +80,18 @@
             font-size: 14px;
             display: block;
             text-align: left;
-            width: 100%; /* Make label full width */
+            width: 100%;
         }
 
         /* Styling the input fields (email and password) */
-        input[type="text"], input[type="password"] {
-            width: 90%; /* Adjust width for input fields */
+        input[type="email"], input[type="password"] {
+            width: 90%;
             padding: 10px;
             font-size: 14px;
             border-radius: 5px;
             border: 1px solid #ccc;
             margin-top: 5px;
-            text-align: left; /* Left aligned for text inside input fields */
+            text-align: left;
         }
 
         /* Styling the login button */
@@ -97,30 +105,35 @@
             font-weight: 600;
             cursor: pointer;
             width: 30%;
-            margin: 20px auto; /* Center the button with auto margins */
-            display: block; /* Make button a block element to use auto margins */
+            margin: 20px auto;
+            display: block;
+        }
+
+        .login-btn:disabled {
+            background-color: #999;
+            cursor: not-allowed;
         }
 
         /* Footer with the UA logo */
         .footer {
             background-color: #611327;
-            padding: 0 10px; /* Remove top/bottom padding and keep side padding */
+            padding: 0 10px;
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 100px; /* Set a specific height for the footer */
+            height: 100px;
             box-sizing: border-box;
-            display: flex; /* Use flexbox to align items */
-            justify-content: flex-end; /* Move the logo to the right */
-            align-items: center; /* Vertically center the logo */
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
         }
 
         /* Styling for the UA logo */
         .footer img {
-            height: 100%; /* Make the image height 100% of the footer height */
-            max-height: 100%; /* Ensure the image doesn't exceed the container height */
-            width: auto; /* Maintain the aspect ratio of the logo */
-            padding: 5px; /* Adjust padding as needed */
+            height: 100%;
+            max-height: 100%;
+            width: auto;
+            padding: 5px;
             box-sizing: border-box;
         }
 
@@ -158,20 +171,22 @@
         
         <!-- Bottom section (3/4th, gray) -->
         <div class="bottom-section">
-            <!-- Email input field -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" required pattern="^[A-Za-z0-9._%+-]+@uark\.edu$" title="Email must be in the format username@uark.edu">
-            </div>
-            
-            <!-- Password input field -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-            </div>
-            
-            <!-- Login button -->
-            <button class="login-btn" type="button" onclick="location.href='index.html';">Login</button>
+            <form id="loginForm">
+                <!-- Email input field and required format-->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" pattern=".+@uark\.edu$" title="Please enter your uark.edu email address" required placeholder="Enter your uark email">
+                </div>
+                
+                <!-- Password input field -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                
+                <!-- Login button -->
+                <button class="login-btn" type="submit" id="loginButton" disabled>Login</button>
+            </form>
         </div>
     </div>
 
@@ -179,6 +194,35 @@
     <div class="footer">
         <img src="icons/UALogo.png" alt="UA Logo">
     </div>
+
+    <script>
+        // Get form elements
+        const form = document.getElementById('loginForm');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+
+        // Function to check if form is valid
+        function checkFormValidity() {
+            if (email.value.trim() && password.value.trim()) {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
+            }
+        }
+
+        // Add event listeners to inputs
+        email.addEventListener('input', checkFormValidity);
+        password.addEventListener('input', checkFormValidity);
+
+        // Form submission handler
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (email.value.trim() && password.value.trim()) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
 
 </body>
 </html>
