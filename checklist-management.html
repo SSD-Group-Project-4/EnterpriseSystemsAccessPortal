@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Management - Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <div id="checklist-management-message" class="section">
+        <div class="container">
+            <h2>Checklist Management</h2>
+            <p>Seamlessly manage and monitor your progress with customizable checklists for Enterprise Systems courses and software requirements. Create, view, and export checklists to track course related data. </p>
+
+            <div class="box-row">
+                <a href="generate-checklist.html" class="box">
+                    <img src="icons/GenerateChecklist.png" alt="Generate Checklist">
+                    <h3>Generate Checklist</h3>
+                    <p>This feature generates Checklist that will be sent to professors in other to track Enterprise Course data. </p>
+                </a>
+                <a href="download-checklist.html" class="box">
+                    <img src="icons/DownloadChecklist.png" alt="Download Checklist">
+                    <h3>Download Checklist</h3>
+                    <p>This feature downloads the generated Checklist in PDF / Excel format. </p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+</script>
+</body>
+</html>
