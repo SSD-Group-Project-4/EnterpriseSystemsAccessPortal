@@ -14,7 +14,7 @@ body {
         #uark-header {
             background-color: #9d2235;
             color: white;
-            padding: 1rem 0;
+            padding: 0.2rem 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -33,7 +33,7 @@ body {
             background-color: #9d2235;
             padding: 0.5rem 0;
             position: fixed;
-            top: 82px; /* Adjust this value based on the height of your header */
+            top: 55px; /* Adjust this value based on the height of your header */
             left: 0;
             right: 0;
             z-index: 1000;
@@ -158,6 +158,7 @@ body {
             text-align: center;
             padding: 1rem 0;
             margin-top: 2rem;
+            height: 5%;
         }
         form {
                   background-color: white;

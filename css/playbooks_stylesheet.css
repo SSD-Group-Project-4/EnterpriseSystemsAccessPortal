@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+}
+
+#playbook-content {
+    padding: 2rem 0;
+    margin-top: 150px; 
+    margin-bottom: 100px;
+}
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.course-tile {
+    /* margin-bottom: 40%; */
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* height: 75%;  */
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+
+.course-tile:hover {
+    transform: translateY(-5px);
+}
+
+.card-top {
+    background-color: #9D2235; 
+    padding: 20px;
+    color: white; 
+    text-align: center;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-top h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 200;
+    letter-spacing: 0.01em; 
+    font-family: 'Bodoni Moda', serif; 
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.card-top h3 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif, cursive;
+    font-style: italic;
+    font-weight: 200;
+    color: #F2F2F4; 
+    flex: 1;
+}
+
+.card-bottom {
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    background-color: #F2F2F4;
+}
+
+.course-id {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.course-title {
+    margin: 0;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+
+.course-status {
+    margin: 0;
+    font-size: 14px;
+    color: green;
+}

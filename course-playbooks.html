@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal - Interactive FAQ</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+    <link rel="stylesheet" href="css/playbooks_stylesheet.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+
+<section id="playbook-content">
+    
+        <div id="courses-container" class="courses-container">
+            <!-- Dynamic tiles appear here -->
+
+        </div>
+</section>
+
+
+<footer style="background-color: #9d2235; color: white; text-align: center; padding: 1rem 0; position: fixed; bottom: 0; width: 100%;">
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+
+</script>
+
+
+<!-- Dynamically load course information -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load the CSV file
+        Papa.parse('files/course.csv', {
+            download: true,
+            header: true,
+            complete: function(results) {
+                const courses = results.data;
+                const container = document.getElementById('courses-container');
+                
+                courses.forEach(course => {
+                    // Create the course tile element
+                    const tile = document.createElement('div');
+                    tile.classList.add('course-tile');
+
+                    tile.innerHTML = `
+                        <div class="card-top">
+                            <h2>WALTON</h2>
+                            <h3>Information Systems</h3>
+                        </div>
+                        <div class="card-bottom">
+                            <h3 class="course-id">${course.course_id}</h3>
+                            <p class="course-title">${course.course_title}</p>
+                            <p class="course-status">Priority: ${course.course_status}</p>
+                        </div>
+                    `;
+
+                    container.appendChild(tile);
+                });
+            },
+            error: function(error) {
+                console.error('Error loading the CSV file:', error);
+            }
+        });
+    });
+</script>
+</body>
+</html>
