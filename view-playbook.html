@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Playbook</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+    <link rel="stylesheet" href="css/course_styles.css">
+    <link rel="stylesheet" href="css/playbooks_stylesheet.css">
+</head>
+<body>
+    <div id="header-nav-placeholder"></div>
+
+    <div id="main-content">
+        <div class="container">
+            <div class="section">
+                <h2>Playbook Viewer</h2>
+                <div class="pdf-container">
+                    <embed id="pdf-viewer" src="" type="application/pdf" width="100%" height="600px">
+                </div>
+                <button onclick="closeViewer()">Close</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/playbooks.js"></script>
+    <script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+        function getCourseNumberFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('courseNumber');
+        }
+
+        function loadPDF() {
+            const courseNumber = getCourseNumberFromURL();
+            const pdfViewer = document.getElementById('pdf-viewer');
+            pdfViewer.src = `playbooks/${courseNumber}.pdf`;
+        }
+
+        function closeViewer() {
+            window.location.href = 'course-playbooks.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPDF);
+    </script>
+</body>
+</html>
