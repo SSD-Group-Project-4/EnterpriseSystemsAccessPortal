@@ -50,6 +50,58 @@
             font-weight: bold;
             margin-top: 10px;
         }
+         /* New styles for search bar */
+         .search-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 8px 35px 8px 15px;
+            border: 2px solid #9d2235;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #9d2235;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: none;
+        }
+
+        .clear-search:hover {
+            color: #7c1a29;
+        }
+
+        .search-box:focus {
+            border-color: #7c1a29;
+            box-shadow: 0 0 5px rgba(157, 34, 53, 0.2);
+        }
+
+        /* Show clear button when search has content */
+        .search-box:not(:placeholder-shown) + .clear-search {
+            display: block;
+        }
+        /* ... your existing styles ... */
+        .no-results {
+            margin-top: 20px;
+            color: #7c1a29; 
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +109,12 @@
 
 <div id="main-content">
     <section id="faq-section">
-        <div class="container">
+        <div class="container" style="position: relative;">
+             <!-- Add search container -->
+             <div class="search-container ">
+                <input type="text" class="search-box" placeholder="Search FAQs..." id="faqSearch">
+                <button class="clear-search" id="clearSearch">×</button>
+            </div>
             <h2>Frequently Asked Questions</h2>
             <p>Find answers to common questions about Enterprise Systems and the platform.</p>
             
@@ -127,6 +184,46 @@
         // Here you would typically send this feedback to a server
         console.log(`User found the answer ${type}`);
     }
+    // Search functionality
+    const searchBox = document.getElementById('faqSearch');
+        const clearButton = document.getElementById('clearSearch');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        const noResultsMessage = document.createElement('p');
+        noResultsMessage.classList.add('no-results');
+
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            let resultsFound = false;
+
+            accordionItems.forEach(item => {
+                const question = item.querySelector('.accordion-header').textContent.toLowerCase();
+                const answer = item.querySelector('.accordion-content').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = '';
+                    resultsFound = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (resultsFound) {
+                noResultsMessage.textContent = ''; // Clear the message if results are found
+                document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling); // Add the message after the accordion
+            } else {
+                noResultsMessage.textContent = 'No results found for your search. Please try to search again.';
+                document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling); // Add the message after the accordion
+            }
+        });
+
+        clearButton.addEventListener('click', function() {
+            searchBox.value = '';
+            accordionItems.forEach(item => {
+                item.style.display = '';
+            });
+            noResultsMessage.textContent = ''; // Clear the message when the search is cleared
+        });
 </script>
 </body>
 </html>
+
