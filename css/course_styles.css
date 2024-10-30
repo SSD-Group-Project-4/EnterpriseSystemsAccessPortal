@@ -1,0 +1,129 @@
+/* Additional styles not present in esap_styles.css */
+.software-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.software-item {
+    padding: 4px 8px;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+.software-item.active {
+    background-color: #9d2235;
+    color: white;
+    border: 1px solid #7c1a29;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+.error-message {
+    background-color: #fee;
+    color: #9d2235;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+    border: 1px solid #9d2235;
+}
+
+/* New table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+}
+
+th {
+    background-color: #9d2235;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #7c1a29;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Media query for software list on mobile */
+@media (max-width: 768px) {
+    .software-list {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .software-item {
+        width: fit-content;
+    }
+    
+    /* Responsive table styles */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    th, td {
+        min-width: 120px;
+    }
+}
+#courseTable {
+    max-width: 100%;
+    overflow-x: auto; /* Allows horizontal scrolling */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
