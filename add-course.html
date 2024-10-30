@@ -35,8 +35,8 @@
             <label>Select Software:</label>
           </div>
         
-          <button type="submit">Submit</button>
-          
+          <button type="submit">Add Course</button>
+          <button onclick="window.location.href='course-management.html'">Close</button>
         </form>
       </div>
     </section>
@@ -87,7 +87,7 @@
     const form = document.getElementById('add-course-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevents the default form submission
-      
+        addCourse();
         // Custom confirmation dialog
         let confirmationMessage = "Success!\n\nThe course has been added successfully.";
         if (window.confirm(confirmationMessage)) {
@@ -97,5 +97,7 @@
     });
 
 </script>
+<script src="js/db.js"></script>
+<script src="js/courses.js"></script>
 </body>
 </html>

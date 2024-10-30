@@ -185,7 +185,7 @@ body {
                   font-size: 1rem;
               }
               button:hover {
-                  background-color: #7c1a29;
+                  background-color: #9d2235;
               }
               /* Radio button container */
               .radio-group {
@@ -313,5 +313,20 @@ body {
             /* Add this to remove the <br> tag spacing */
             .accordion-content br {
                 display: none;
+            }
+            .icon-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                display: inline-block; /* Ensure buttons are inline */
+                margin-right: 5px; /* Space between buttons */
+                
+            }
+            
+            .icon {
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
             }
            
