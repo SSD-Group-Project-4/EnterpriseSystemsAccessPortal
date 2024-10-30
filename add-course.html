@@ -48,18 +48,12 @@
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/courses.js"></script>
 <script>
-        $(function(){
-            $("#header-nav-placeholder").load("navigation-pane.html");
-        });
-        // Software categories and options
-    const softwareCategories = {
-        "SAS Products": ["SAS EG", "SAS EM", "SAS Viya"],
-        "SAP Products": ["SAP HANA", "SAP S/4Hana", "SAP Solution Manager"],
-        "Database Products": ["SQL Server (Read)", "SQL Server (Individual DB)", "Teradata"],
-        "Programming Products": ["Visual Studio", "JupyterHub Access (Azure)"],
-        "Visualization Products": ["Tableau", "Power BI"]
-    };
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
 
     // Dynamically generate accordion sections
     const accordion = document.querySelector('.accordion');
@@ -82,8 +76,7 @@
         }
     });
 
-
-   // Add event listener for form submission
+    // Add event listener for form submission
     const form = document.getElementById('add-course-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevents the default form submission
@@ -97,7 +90,5 @@
     });
 
 </script>
-<script src="js/db.js"></script>
-<script src="js/courses.js"></script>
 </body>
 </html>

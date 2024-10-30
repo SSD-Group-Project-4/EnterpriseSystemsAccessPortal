@@ -11,8 +11,9 @@ const softwareCategories = {
     "Programming": ["Visual Studio", "JupyterHub Access (Azure)"],
     "Visualization Tools": ["Tableau", "Power BI"]
 };
-
+console.log('courses.js loaded');
 function addCourse() {
+    console.log('addCourse function called');
     // Get form values
     const courseNumber = document.getElementById('course-number').value;
     const courseName = document.getElementById('course-name').value;
