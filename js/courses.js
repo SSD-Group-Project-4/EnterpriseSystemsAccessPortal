@@ -3,6 +3,15 @@ const allSoftware = [
     "SAP HANA", "SAP S/4Hana", "SAP Solution Manager", "SQL Server (Read)", "SQL Server (Individual DB)", 
     "Teradata", "Tableau", "Power BI"
 ]; 
+
+const softwareCategories = {
+    "SAS": ["SAS EG", "SAS EM", "SAS Viya"],
+    "SAP": ["SAP HANA", "SAP S/4Hana", "SAP Solution Manager"],
+    "Databases": ["SQL Server (Read)", "SQL Server (Individual DB)", "Teradata"],
+    "Programming": ["Visual Studio", "JupyterHub Access (Azure)"],
+    "Visualization Tools": ["Tableau", "Power BI"]
+};
+
 function addCourse() {
     // Get form values
     const courseNumber = document.getElementById('course-number').value;
@@ -151,12 +160,14 @@ function populateEditForm(course) {
     document.getElementById('edit-course-name').value = course.courseName;
     document.getElementById('edit-course-description').value = course.courseDescription;
 
-    populateSoftwareCheckboxes(); // Populate checkboxes
+    populateSoftwareAccordion(course); // Populate accordion with checkboxes
+
+    /*populateSoftwareCheckboxes(); // Populate checkboxes
 
     const checkboxes = document.querySelectorAll('input[name="edit-software"]');
     checkboxes.forEach(checkbox => {
         checkbox.checked = course.requiredSoftwares.includes(checkbox.value);
-    });
+    });*/
 }
 
 function openModal() {
@@ -218,4 +229,32 @@ function populateSoftwareCheckboxes() {
             <input type="checkbox" name="edit-software" value="${software}"> ${software}
         </label>
     `).join('');
+}
+
+function populateSoftwareAccordion(course) {
+    const accordion = document.querySelector('.accordion');
+    accordion.innerHTML = ''; // Clear existing content
+
+    for (const [category, products] of Object.entries(softwareCategories)) {
+        accordion.innerHTML += `
+            <div class="accordion-item">
+                <h4 class="accordion-header">${category}</h4>
+                <div class="accordion-content">
+                    ${products.map(product => `
+                        <label>
+                            <input type="checkbox" name="edit-software" value="${product}" ${course.requiredSoftwares.includes(product) ? 'checked' : ''}> ${product}
+                        </label><br>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Add accordion toggle functionality
+    accordion.addEventListener('click', function (e) {
+        if (e.target.classList.contains('accordion-header')) {
+            const content = e.target.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    });
 }
