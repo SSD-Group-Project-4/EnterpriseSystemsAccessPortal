@@ -47,7 +47,7 @@ body {
 
 .card-top h2 {
     margin: 0;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 200;
     letter-spacing: 0.01em; 
     font-family: 'Bodoni Moda', serif; 
@@ -57,7 +57,7 @@ body {
 
 .card-top h3 {
     margin: 0;
-    font-size: 24px;
+    font-size: 12px;
     font-family: 'Roboto', sans-serif, cursive;
     font-style: italic;
     font-weight: 200;
