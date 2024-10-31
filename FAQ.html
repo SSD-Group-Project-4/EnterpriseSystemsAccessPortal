@@ -50,8 +50,35 @@
             font-weight: bold;
             margin-top: 10px;
         }
-         /* New styles for search bar */
-         .search-container {
+        .thumbs-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .thumbs-container .thumb-icon {
+            font-size: 1.2em;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+        }
+        .comment-section textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        .comment-list {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        
+        /* New styles for search bar */
+        .search-container {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -59,7 +86,6 @@
             align-items: center;
             width: 300px;
         }
-
         .search-box {
             width: 100%;
             padding: 8px 35px 8px 15px;
@@ -68,7 +94,6 @@
             outline: none;
             font-size: 14px;
         }
-
         .clear-search {
             position: absolute;
             right: 10px;
@@ -82,26 +107,49 @@
             height: 20px;
             display: none;
         }
-
         .clear-search:hover {
             color: #7c1a29;
         }
-
         .search-box:focus {
             border-color: #7c1a29;
             box-shadow: 0 0 5px rgba(157, 34, 53, 0.2);
         }
-
-        /* Show clear button when search has content */
         .search-box:not(:placeholder-shown) + .clear-search {
             display: block;
         }
-        /* ... your existing styles ... */
         .no-results {
             margin-top: 20px;
             color: #7c1a29; 
             font-weight: bold;
         }
+
+         /* Additional styling for FAQ management modals */
+         .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+        }
+        .modal-close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -111,7 +159,7 @@
     <section id="faq-section">
         <div class="container" style="position: relative;">
              <!-- Add search container -->
-             <div class="search-container ">
+             <div class="search-container">
                 <input type="text" class="search-box" placeholder="Search FAQs..." id="faqSearch">
                 <button class="clear-search" id="clearSearch">×</button>
             </div>
@@ -120,23 +168,45 @@
             
             <div class="accordion">
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What is Enterprise systems?</h4>
+                    <h4 class="accordion-header">
+                        What is Enterprise systems?
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-1">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-1">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>An <strong>Enterprise System</strong> is a large-scale software that is used to manage, track, and control complex business operations.</p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 1, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 1, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-1" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(1)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-1"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How do I report a technical issue with the platform?</h4>
+                    <h4 class="accordion-header">
+                        How do I report a technical issue with the platform?
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-2">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-2">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Contact the IT Help Desk or create a ticket at <a href="http://help.uark.edu">help.uark.edu</a>.</p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 2, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 2, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-2" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(2)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-2"></div>
                         </div>
                     </div>
                 </div>
@@ -155,14 +225,50 @@
         $("#header-nav-placeholder").load("navigation-pane.html");
     });
 
-    // Enhanced accordion toggle functionality with smooth animation
+    // Store feedback counts and track if a user has already provided feedback
+    const feedbackCounts = {
+        1: { helpful: 0, notHelpful: 0 },
+        2: { helpful: 0, notHelpful: 0 }
+    };
+    const feedbackGiven = {};
+
+    // Feedback functionality with thumbs up/down update
+    function provideFeedback(button, questionId, type) {
+        const feedbackButtons = button.parentElement;
+        
+        // Check if feedback has been given already for the specific question and type
+        if (!feedbackGiven[questionId]) {
+            feedbackGiven[questionId] = { helpful: false, notHelpful: false };
+        }
+
+        // Increment count and update display if not previously submitted
+        if (type === 'helpful' && !feedbackGiven[questionId].helpful) {
+            feedbackCounts[questionId].helpful += 1;
+            feedbackGiven[questionId].helpful = true;
+            document.getElementById(`helpful-count-${questionId}`).textContent = feedbackCounts[questionId].helpful;
+        } else if (type === 'not-helpful' && !feedbackGiven[questionId].notHelpful) {
+            feedbackCounts[questionId].notHelpful += 1;
+            feedbackGiven[questionId].notHelpful = true;
+            document.getElementById(`not-helpful-count-${questionId}`).textContent = feedbackCounts[questionId].notHelpful;
+        }
+
+        // Display feedback message
+        const responseElement = document.createElement('div');
+        responseElement.className = 'feedback-response';
+        responseElement.textContent = type === 'helpful' ? 'Thanks for your feedback!' : 'We\'ll work on improving this answer.';
+        responseElement.style.color = type === 'helpful' ? '#27ae60' : '#e67e22';
+        feedbackButtons.innerHTML = '';
+        feedbackButtons.appendChild(responseElement);
+
+        console.log(`User found the answer ${type}`);
+    }
+
+    // Accordion toggle functionality
     document.querySelector('.accordion').addEventListener('click', function (e) {
         if (e.target.classList.contains('accordion-header')) {
             const content = e.target.nextElementSibling;
             content.classList.toggle('active');
             e.target.classList.toggle('active');
-            
-            // Smooth scroll to the opened accordion item
             if (content.classList.contains('active')) {
                 setTimeout(() => {
                     e.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -171,59 +277,58 @@
         }
     });
 
-    // Feedback functionality
-    function provideFeedback(button, type) {
-        const feedbackButtons = button.parentElement;
-        const responseElement = document.createElement('div');
-        responseElement.className = 'feedback-response';
-        responseElement.textContent = type === 'helpful' ? 'Thanks for your feedback!' : 'We\'ll work on improving this answer.';
-        responseElement.style.color = type === 'helpful' ? '#27ae60' : '#e67e22';
-        feedbackButtons.innerHTML = '';
-        feedbackButtons.appendChild(responseElement);
-        
-        // Here you would typically send this feedback to a server
-        console.log(`User found the answer ${type}`);
+    // Add a new comment and display it below the FAQ
+    function addComment(questionId) {
+        const commentInput = document.getElementById(`comment-input-${questionId}`);
+        const commentText = commentInput.value.trim();
+        if (commentText !== "") {
+            const commentList = document.getElementById(`comment-list-${questionId}`);
+            const commentElement = document.createElement("div");
+            commentElement.textContent = commentText;
+            commentList.appendChild(commentElement);
+            commentInput.value = ""; // Clear the input after submission
+        }
     }
+
     // Search functionality
     const searchBox = document.getElementById('faqSearch');
-        const clearButton = document.getElementById('clearSearch');
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        const noResultsMessage = document.createElement('p');
-        noResultsMessage.classList.add('no-results');
+    const clearButton = document.getElementById('clearSearch');
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    const noResultsMessage = document.createElement('p');
+    noResultsMessage.classList.add('no-results');
 
-        searchBox.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            let resultsFound = false;
+    searchBox.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let resultsFound = false;
 
-            accordionItems.forEach(item => {
-                const question = item.querySelector('.accordion-header').textContent.toLowerCase();
-                const answer = item.querySelector('.accordion-content').textContent.toLowerCase();
+        accordionItems.forEach(item => {
+            const question = item.querySelector('.accordion-header').textContent.toLowerCase();
+            const answer = item.querySelector('.accordion-content').textContent.toLowerCase();
 
-                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                    item.style.display = '';
-                    resultsFound = true;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            if (resultsFound) {
-                noResultsMessage.textContent = ''; // Clear the message if results are found
-                document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling); // Add the message after the accordion
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.style.display = '';
+                resultsFound = true;
             } else {
-                noResultsMessage.textContent = 'No results found for your search. Please try to search again.';
-                document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling); // Add the message after the accordion
+                item.style.display = 'none';
             }
         });
 
-        clearButton.addEventListener('click', function() {
-            searchBox.value = '';
-            accordionItems.forEach(item => {
-                item.style.display = '';
-            });
-            noResultsMessage.textContent = ''; // Clear the message when the search is cleared
+        if (resultsFound) {
+            noResultsMessage.textContent = '';
+            document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling);
+        } else {
+            noResultsMessage.textContent = 'No results found for your search. Please try to search again.';
+            document.querySelector('.accordion').parentNode.insertBefore(noResultsMessage, document.querySelector('.accordion').nextSibling);
+        }
+    });
+
+    clearButton.addEventListener('click', function() {
+        searchBox.value = '';
+        accordionItems.forEach(item => {
+            item.style.display = '';
         });
+        noResultsMessage.textContent = '';
+    });
 </script>
 </body>
 </html>
-
