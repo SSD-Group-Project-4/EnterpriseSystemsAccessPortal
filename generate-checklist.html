@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+</head>                
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <section id="add-course-section">
+      <div class="container">
+        <h2>Generate Checklist</h2>
+        <p>The Generate Checklist feature enables users to input and manage course details, applications, and database permissions for course administration.</p>
+        <form id="add-course-form">
+          <div class="form-group">
+            <label for="course-number">Course Number:</label>
+            <input type="text" id="course-number" name="course-number" required style="width: 97%;"> 
+            
+          </div>
+          <div class="form-group">
+            <label for="course-name">Course Name:</label>
+            <input type="text" id="course-name" name="course-name" required style="width: 97%;">
+             
+          </div>
+          <div class="form-group">
+            <label for="course-description">Course Description:</label>
+            <textarea id="course-description" name="course-description" rows="4" style="width: 98%; height: 50px;"></textarea> 
+          </div>
+        
+          
+          <button type="submit">Generate Checklist</button>
+          <button onclick="window.location.href='checklist-management.html'">Close</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/courses.js"></script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+
+    
+    // Add event listener for form submission
+    const form = document.getElementById('add-course-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents the default form submission
+        addCourse();
+        // Custom confirmation dialog
+        let confirmationMessage = "Success!\n\nThe course has been added successfully.";
+        if (window.confirm(confirmationMessage)) {
+            // Proceed after user acknowledges
+            form.reset();
+        }
+    });
+
+</script>
+</body>
+</html>
