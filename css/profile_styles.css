@@ -1,0 +1,52 @@
+/* Styles for the profile page */
+#user-profile-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Added max-width for better responsiveness */
+    margin: 0 auto; /* Center the form */
+}
+
+#user-profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#user-profile-form input,
+#user-profile-form select,
+#user-profile-form button {
+    width: 97%; /* Adjusted width to prevent horizontal scroll */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#user-profile-form button {
+    background-color: #9d2235;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#user-profile-form button:hover {
+    background-color: #7c1a29; /* Darker shade on hover */
+}
+
+#user-profile-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#user-profile-section h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#user-profile-section p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}

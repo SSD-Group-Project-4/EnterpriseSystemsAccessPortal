@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Systems Access Portal</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+    <link rel="stylesheet" href="profile_styles.css">
+</head>                
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <section id="user-profile-section">
+      <div class="container">
+        <h2>My Profile</h2>
+        <form id="user-profile-form">
+          <div class="form-group">
+            <label for="user-name">Name</label>
+            <input type="text" id="user-name" name="user-name" value="Jane Doe" readonly required style="width: 97%;"> 
+          </div>
+
+          <div class="form-group">
+            <label for="user-email">Email</label>
+            <input type="text" id="user-email" name="user-email" value="jdoe@uark.edu" readonly required style="width: 97%;">
+            </div>
+        
+            <div class="form-group">
+              <label for="user-email">Phone Number</label>
+              <input type="text" id="phone-number" name="phone-number" value="(479) 123-4567" readonly required style="width: 97%;">
+              </div>
+
+              <div class="form-group">
+                <label for="user-email">Department</label>
+                <input type="text" id="department" name="department" value="ISYS" readonly required style="width: 97%;">
+                </div>
+
+            <div class="form-group">
+                <label for="user-role">User Role</label>
+                <input type="text" id="user-role" name="user-role" value="Graduate Assistant" readonly required style="width: 97%;">
+                </div>
+    
+        
+          <button onclick="window.location.href='course-management.html'">Close</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+
+<footer>
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/courses.js"></script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+
+
+    // Add event listener for form submission
+    const form = document.getElementById('user-profile-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents the default form submission
+        addCourse();
+        // Custom confirmation dialog
+        let confirmationMessage = "Success!\n\nThe course has been added successfully.";
+        if (window.confirm(confirmationMessage)) {
+            // Proceed after user acknowledges
+            form.reset();
+        }
+    });
+
+</script>
+</body>
+</html>
