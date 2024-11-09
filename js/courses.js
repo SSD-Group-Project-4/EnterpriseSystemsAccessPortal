@@ -259,3 +259,44 @@ function populateSoftwareAccordion(course) {
         }
     });
 }
+
+function deleteCourse(courseNumber) {
+    if (confirm(`Are you sure you want to delete course ${courseNumber}?`)) {
+        // Delete the course from the database
+        deleteCourseFromDB(courseNumber, (error) => {
+            if (error) {
+                console.error('Error deleting course:', error);
+                // Optionally, display an error message to the user
+                alert(`Error deleting course ${courseNumber}: ${error}`);
+            } else {
+                // Display a confirmation message after successful deletion
+                alert(`Course ${courseNumber} has been deleted.`);
+                // Refresh the page to reflect the changes
+                location.reload();
+            }
+        });
+    }
+}
+
+function deleteCourseFromDB(courseNumber, callback) {
+    const request = indexedDB.open('EnterpriseSystemsAccessPortalDB', 1);
+
+    request.onsuccess = function(event) {
+        const db = event.target.result;
+        const transaction = db.transaction('courses', 'readwrite');
+        const store = transaction.objectStore('courses');
+        const deleteRequest = store.delete(courseNumber);
+
+        deleteRequest.onsuccess = function() {
+            callback(null);
+        };
+
+        deleteRequest.onerror = function(event) {
+            callback(event.target.errorCode);
+        };
+    };
+
+    request.onerror = function(event) {
+        callback(event.target.errorCode);
+    };
+}
