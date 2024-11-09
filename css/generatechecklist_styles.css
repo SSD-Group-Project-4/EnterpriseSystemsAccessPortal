@@ -1,0 +1,103 @@
+/* Tooltip styling */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Position above the tooltip icon */
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Specific styles for the + and X buttons */
+.add-btn, .remove-btn {
+    font-size: 16px;
+}
+
+#course-details-table {
+    width: 111.5%;
+}
+
+#course-details-table .label-cell {
+    width: 150px; /* Reduce the width of the label cell */
+    text-align: right;
+    padding-right: 5px; /* Increase the right padding */
+    padding-top: 6px;
+    vertical-align: top;
+}
+
+#course-details-table input[type="text"],
+#course-details-table textarea {
+    width: calc(100% - 120px); /* Adjust the width of the input fields */
+    box-sizing: border-box;
+}
+
+#course-details-table textarea {
+    height: 100px;
+}
+
+/* Unified styles for both tables */
+#applications-table, #databases-table {
+    width: 100.5%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 10px; /* Add some top margin */
+}
+
+#applications-table th, #applications-table td, 
+#databases-table th, #databases-table td {
+    padding: 7px; /* Reduce the padding */
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#applications-table thead th, #databases-table thead th {
+    width: 25%;
+}
+
+.application-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px; /* Reduce the padding */
+}
+
+#applications-table .action-buttons, 
+#databases-table .action-buttons {
+    gap: 3px; /* Reduce the gap between buttons */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#applications-table .action-buttons button, 
+#databases-table .action-buttons button {
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    background-color: #8B0000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+#applications-table .action-buttons button:hover, 
+#databases-table .action-buttons button:hover {
+    background-color: #a83232;
+}
+
