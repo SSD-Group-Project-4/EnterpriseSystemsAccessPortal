@@ -796,3 +796,24 @@ button[type="submit"] {
         width: 100%;
     }
 }
+
+/* Chat-icon styles */
+.chat-icon-button {
+    position: fixed;
+    bottom: 150px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #9d2235;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.chat-icon-button:hover {
+    transform: scale(1.1);
+}
