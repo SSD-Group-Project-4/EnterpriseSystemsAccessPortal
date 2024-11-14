@@ -1,3 +1,5 @@
+/* This CSS only interferes with export–roster and does not interfere with any other HTML */
+
 #export-roster-section .container {
     background-color: #f9f9f9;
     padding: 2rem;

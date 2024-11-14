@@ -1,3 +1,4 @@
+// this JS is related to export-roster And does not interfere with any other HTML
 // Open the database
 let db;
 const request = indexedDB.open("ESRosterDB", 1);
