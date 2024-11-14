@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Roster</title>
+    <link rel="stylesheet" href="css/esap_styles.css">
+    <link rel="stylesheet" href="css/roster_export_style.css">
+</head>
+<body>
+<div id="header-nav-placeholder"></div>
+
+<div id="main-content">
+    <section id="export-roster-section">
+        <div class="container" id="form-container">
+            <h2>Export Student Roster</h2>
+            <p>Select the relevant details to export the uploaded roster.</p>
+            
+            <form id="export-roster-form">
+                <div class="form-group">
+                    <label for="semester">Semester:</label>
+                    <select id="semester" name="semester" required>
+                        <option value="" disabled selected>Select Semester</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Fall">Fall</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select id="year" name="year" required>
+                        <option value="" disabled selected>Select Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Roster Date:</label>
+                    <select id="date" name="date" required>
+                        <option value="" disabled selected>Select Date</option>
+                    </select>
+                </div>
+                <!-- export handled in JS code -->
+                <button type="button" id="export-roster-button" class="export-button">Export to CSV</button>
+            </form>
+        </div>
+    </section>
+</div>
+
+<footer style="background-color: #9d2235; color: white; text-align: center; padding: 1rem 0; position: fixed; bottom: 0; width: 100%;">
+    <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/roster_export.js"></script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+</script>
+</body>
+</html>
