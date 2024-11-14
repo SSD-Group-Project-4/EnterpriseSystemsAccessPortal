@@ -212,159 +212,299 @@
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What is the purpose of the Enterprise Systems Access Portal? </h4>
+                    <h4 class="accordion-header">What is the purpose of the Enterprise Systems Access Portal? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-3">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-3">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>This portal centralizes key operations such as student roster management, course software requirements, playbooks, and checklists. It eliminates the need for scattered files and ensures easy access to the necessary information for providing enterprise system access to the students. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 3, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 3, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-3" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(3)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-3"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">Who can use the portal?</h4>
+                    <h4 class="accordion-header">Who can use the portal?
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-4">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-4">0</span>
+                        </div>  
+                    </h4>
                     <div class="accordion-content">
                         <p>Graduate Assistants and authorized personnel who are assigned roles of giving system access to the students can use this portal.</p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 4, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 4, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-4" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(4)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-4"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How do I manage student rosters in the portal? </h4>
+                    <h4 class="accordion-header">How do I manage student rosters in the portal? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-5">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-5">0</span>
+                        </div> 
+                    </h4>
                     <div class="accordion-content">
                         <p>You can upload, view, compare, and export student rosters using the Student Roster Management feature. This simplifies the process of handling large amounts of student data. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 5, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 5, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-5" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(5)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-5"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What is the Playbook feature used for?  </h4>
+                    <h4 class="accordion-header">What is the Playbook feature used for?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-6">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-6">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>The Playbook feature provides centralized access to operational playbooks used to manage system access. Users can follow the playbook instructions to ensure compliance with the standard procedures. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 6, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 6, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-6" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(6)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-6"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How do I update course software requirements?  </h4>
+                    <h4 class="accordion-header">How do I update course software requirements?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-7">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-7">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>The Course and Software Requirements feature allows you to add, update, and manage the software needs of various courses. It ensures the students have access to the necessary software needed for the classes they are enrolled in. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 7, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 7, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-7" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(7)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-7"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What is checklists feature?  </h4>
+                    <h4 class="accordion-header">What is checklists feature?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-8">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-8">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>The Checklist feature allows you to generate downloadable checklists that details student access to specific software. These checklists can be shared with professors to track software assignments. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 8, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 8, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-8" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(8)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-8"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How do I access the resources on the portal?  </h4>
+                    <h4 class="accordion-header">How do I access the resources on the portal?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-9">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-9">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Once logged in, you can navigate to the relevant section—Students, Courses, Playbooks, or Checklists—from the homepage to access the resources you need. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 9, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 9, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-9" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(9)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-9"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">Can I download reports or data from the portal? </h4>
+                    <h4 class="accordion-header">Can I download reports or data from the portal? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-10">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-10">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Yes, the portal allows you to export student rosters, download playbooks, and generate checklist reports that can be downloaded for further use or record-keeping.  </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 10, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 10, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-10" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(10)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-10"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What are the system requirements for accessing the portal? </h4>
+                    <h4 class="accordion-header">What are the system requirements for accessing the portal? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-11">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-11">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>The platform is web-based and can be accessed using modern web browsers such as Google Chrome, Firefox, or Safari. No additional software installation is required.  </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 11, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 11, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-11" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(11)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-11"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How do I upload a new student roster?  </h4>
+                    <h4 class="accordion-header">How do I upload a new student roster?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-12">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-12">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>To upload a new student roster, go to the "Students" section, click on the upload roster option, and follow the instructions to add your roster file. The system supports various formats like CSV and Excel. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 12, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 12, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-12" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(12)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-12"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">What is role-based access, and how does it work?  </h4>
+                    <h4 class="accordion-header">What is role-based access, and how does it work? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-13">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-13">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Role-based access means that different users have different permissions within the platform. For example, Graduate Assistants may have access to manage student rosters, while administrators can update playbooks and system settings. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 13, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 13, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-13" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(13)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-13"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">How can I compare student rosters from different semesters? </h4>
+                    <h4 class="accordion-header">How can I compare student rosters from different semesters? 
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-14">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-14">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>The Student Management feature allows you to upload multiple rosters and compare them side by side. This is useful for tracking changes between semesters or checking if students are properly enrolled in courses. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 14, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 14, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-14" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(14)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-14"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">Can I edit or customize the checklists?  </h4>
+                    <h4 class="accordion-header">Can I edit or customize the checklists?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-15">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-15">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Currently, the checklists are auto-generated based on the information you provide in the system, but you can customize them by adjusting the inputs, such as software requirements for specific students or courses. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 15, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 15, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-15" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(15)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-15"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="accordion-item">
-                    <h4 class="accordion-header">Is the data in the portal secure?  </h4>
+                    <h4 class="accordion-header">Is the data in the portal secure?  
+                        <div class="thumbs-container">
+                            <span class="thumb-icon">👍</span><span id="helpful-count-16">0</span>
+                            <span class="thumb-icon">👎</span><span id="not-helpful-count-16">0</span>
+                        </div>
+                    </h4>
                     <div class="accordion-content">
                         <p>Yes, the portal is designed with security in mind, using role-based access and encryption to ensure that only authorized personnel can access or manage sensitive data. </p>
                         <div class="feedback-buttons">
-                            <button class="feedback-button helpful" onclick="provideFeedback(this, 'helpful')">Helpful</button>
-                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 'not-helpful')">Not Helpful</button>
+                            <button class="feedback-button helpful" onclick="provideFeedback(this, 16, 'helpful')">Helpful</button>
+                            <button class="feedback-button not-helpful" onclick="provideFeedback(this, 16, 'not-helpful')">Not Helpful</button>
+                        </div>
+                        <div class="comment-section">
+                            <textarea id="comment-input-16" placeholder="Add a comment..."></textarea>
+                            <button onclick="addComment(16)">Submit Comment</button>
+                            <div class="comment-list" id="comment-list-16"></div>
                         </div>
                     </div>
                 </div>
-
+                <br></div>
             </div>
         </div>
     </section>
@@ -383,7 +523,21 @@
     // Store feedback counts and track if a user has already provided feedback
     const feedbackCounts = {
         1: { helpful: 0, notHelpful: 0 },
-        2: { helpful: 0, notHelpful: 0 }
+        2: { helpful: 0, notHelpful: 0 },
+        3: { helpful: 0, notHelpful: 0 },
+        4: { helpful: 0, notHelpful: 0 },
+        5: { helpful: 0, notHelpful: 0 },
+        6: { helpful: 0, notHelpful: 0 },
+        7: { helpful: 0, notHelpful: 0 },
+        8: { helpful: 0, notHelpful: 0 },
+        9: { helpful: 0, notHelpful: 0 },
+        10: { helpful: 0, notHelpful: 0 },
+        11: { helpful: 0, notHelpful: 0 },
+        12: { helpful: 0, notHelpful: 0 },
+        13: { helpful: 0, notHelpful: 0 },
+        14: { helpful: 0, notHelpful: 0 },
+        15: { helpful: 0, notHelpful: 0 },
+        16: { helpful: 0, notHelpful: 0 }
     };
     const feedbackGiven = {};
 
