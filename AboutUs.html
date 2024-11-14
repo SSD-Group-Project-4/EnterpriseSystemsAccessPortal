@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Enterprise Systems Access Portal</title>
+    <style>
+        :root {
+            --uark-red: #9D2235;
+            --uark-red-dark: #8a1e2e;
+            --success-green: #4CAF50;
+            --success-green-hover: #45a049;
+            --gray-100: #f8f9fa;
+            --gray-200: #eee;
+            --gray-300: #ddd;
+            --gray-400: #ccc;
+            --gray-500: #999;
+            --gray-600: #666;
+            --gray-700: #444;
+            --border-radius: 4px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --container-width: 1200px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #main-content {
+            padding: 2rem 0;
+            margin-top: 150px;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about-header {
+            color: var(--uark-red);
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .description {
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--gray-700);
+        }
+
+        .team-section {
+            margin-top: 40px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
+            border-left: 4px solid var(--uark-red);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-name {
+            color: var(--uark-red);
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .member-role {
+            color: var(--gray-700);
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .member-email {
+            color: var(--gray-600);
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-top: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .member-email:hover {
+            color: var(--uark-red);
+        }
+
+        footer {
+            background-color: var(--uark-red);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .about-header {
+                font-size: 24px;
+            }
+
+            .team-member {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-nav-placeholder"></div>
+
+    <div id="main-content">
+        <div class="container">
+            <div class="about-section">
+                <h1 class="about-header">About Enterprise Systems Access Portal</h1>
+                
+                <div class="description">
+                    <p>Welcome to the Enterprise Systems Access Portal (ESAP) at the University of Arkansas. Our dedicated team works tirelessly to provide secure and efficient access management solutions for the university community. We combine technical expertise with innovative thinking to deliver a seamless user experience while maintaining robust security standards.</p>
+                </div>
+
+                <div class="team-section">
+                    <h2 class="about-header">Our Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <h3 class="member-name">Abhijit Dutta</h3>
+                            <div class="member-role">Full Stack Developer</div>
+                            <a href="mailto:ADutta@walton.uark.edu" class="member-email">ADutta@walton.uark.edu</a>
+                        </div>
+
+                        <div class="team-member">
+                            <h3 class="member-name">Oluwaseyi Otunlape</h3>
+                            <div class="member-role">Full Stack Developer</div>
+                            <a href="mailto:OOtunlape@walton.uark.edu" class="member-email">OOtunlape@walton.uark.edu</a>
+                        </div>
+
+                        <div class="team-member">
+                            <h3 class="member-name">Poornima Malviya</h3>
+                            <div class="member-role">Software Developer</div>
+                            <a href="mailto:PMalviya@walton.uark.edu" class="member-email">PMalviya@walton.uark.edu</a>
+                        </div>
+
+                        <div class="team-member">
+                            <h3 class="member-name">Sajani Shrestha</h3>
+                            <div class="member-role">Project Manager</div>
+                            <a href="mailto:SShrestha@walton.uark.edu" class="member-email">SShrestha@walton.uark.edu</a>
+                        </div>
+
+                        <div class="team-member">
+                            <h3 class="member-name">Sreelekha Donthi</h3>
+                            <div class="member-role">Full Stack Developer</div>
+                            <a href="mailto:SDonthi@walton.uark.edu" class="member-email">SDonthi@walton.uark.edu</a>
+                        </div>
+
+                        <div class="team-member">
+                            <h3 class="member-name">Surbhit Jangra</h3>
+                            <div class="member-role">Front-end Developer</div>
+                            <a href="mailto:FSurbhit@walton.uark.edu" class="member-email">FSurbhit@walton.uark.edu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Enterprise Systems Access Portal, Copyright © 2024</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#header-nav-placeholder").load("navigation-pane.html");
+        });
+    </script>
+</body>
+</html>
