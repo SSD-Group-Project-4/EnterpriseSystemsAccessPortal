@@ -6,6 +6,115 @@
     <title>Enterprise Systems Access Portal - Interactive FAQ</title>
     <link rel="stylesheet" href="css/esap_styles.css">
     <style>
+
+         /* Basic styling for the popup */
+  .feedback-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    display: none; /* Hidden initially, will show on page load */
+  }
+
+  .feedback-popup h3 {
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
+
+  .feedback-popup .close-btn,
+  .feedback-popup .minimize-btn {
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .feedback-popup .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .feedback-popup .minimize-btn {
+    position: absolute;
+    top: 8px;
+    right: 30px;
+  }
+
+  .feedback-popup label {
+    display: block;
+    margin: 8px 0 4px;
+  }
+
+  .feedback-popup input[type="radio"] {
+    margin-right: 6px;
+  }
+
+  .feedback-popup textarea {
+    width: 100%;
+    height: 50px;
+    margin-top: 8px;
+    resize: none;
+    padding: 8px;
+  }
+
+  .privacy-notice {
+    font-size: 10px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  .privacy-notice a {
+    color: #0078D4;
+    text-decoration: none;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  .button-group button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .submit-btn {
+    background-color: #9d2235;
+    color: white;
+  }
+
+  .cancel-btn {
+    background-color: #f3f3f3;
+    color: black;
+  }
+
+  /* Styling for minimized icon */
+  .minimized-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #9d2235;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* Hidden initially */
+  }
+
+
         .accordion-item {
             transition: all 0.3s ease;
         }
@@ -639,5 +748,68 @@
         noResultsMessage.textContent = '';
     });
 </script>
+
+<!-- Feedback Popup HTML Structure -->
+<div class="feedback-popup" id="feedbackPopup">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <span class="minimize-btn" onclick="minimizePopup()">−</span>
+    <h3>Feedback to WCOB</h3>
+    <form id="feedbackForm">
+      <label>Kindly provide the overall rating of your experience on the Portal </label>
+      <div>
+        <input type="radio" name="rating" value="5" id="rating5"><label for="rating5">5 - Extremely satisfactory</label><br>
+        <input type="radio" name="rating" value="4" id="rating4"><label for="rating4">4 - Satisfactory</label><br>
+        <input type="radio" name="rating" value="3" id="rating3"><label for="rating3">3 - Neutral</label><br>
+        <input type="radio" name="rating" value="2" id="rating2"><label for="rating2">2 - Unsatisfactory</label><br>
+        <input type="radio" name="rating" value="1" id="rating1"><label for="rating1">1 - Very unsatisfactory</label>
+      </div>
+      <label>Please tell us more. Why did you choose that rating?</label>
+      <textarea placeholder="Please note that this area is limited to 250 characters" maxlength="250"></textarea>
+      <div class="privacy-notice">
+        By pressing submit, your feedback will be used to improve the quality of your experience.
+        <a href="#" target="_blank">Privacy Statement</a>
+      </div>
+      <div class="button-group">
+        <button type="button" class="submit-btn" onclick="submitFeedback()">Submit</button>
+        <button type="button" class="cancel-btn" onclick="closePopup()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Minimized Icon -->
+  <div class="minimized-icon" id="minimizedIcon" onclick="openPopup()">&#128172;</div>
+  
+  <!-- JavaScript to Show/Hide Popup and Icon -->
+  <script>
+    // Show the popup when the page loads
+    window.onload = function() {
+      document.getElementById("feedbackPopup").style.display = "block";
+    };
+  
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById("feedbackPopup").style.display = "none";
+      document.getElementById("minimizedIcon").style.display = "flex";
+    }
+  
+    // Function to minimize the popup
+    function minimizePopup() {
+      document.getElementById("feedbackPopup").style.display = "none";
+      document.getElementById("minimizedIcon").style.display = "flex";
+    }
+  
+    // Function to open the popup from minimized icon
+    function openPopup() {
+      document.getElementById("feedbackPopup").style.display = "block";
+      document.getElementById("minimizedIcon").style.display = "none";
+    }
+  
+    // Function to handle feedback submission
+    function submitFeedback() {
+      alert("Thank you for your feedback!");
+      closePopup();
+      // Here you can add logic to send the feedback data to a server if needed
+    }
+  </script>
 </body>
 </html>
