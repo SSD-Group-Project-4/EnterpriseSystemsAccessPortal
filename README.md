@@ -35,6 +35,18 @@ View, update, and manage student information and their associated courses.
 - Create, edit, and maintain a categorized list of Frequently Asked Questions (FAQs).
 - Allow users to search and filter FAQs to quickly find the information they need.
 
+### 7. Decentralized File Storage with Filecoin Integration
+
+- Files are stored on the Filecoin network with unique CIDs, ensuring secure and decentralized storage.
+- Users retrieve files using CIDs, with access controlled through role-based permissions.
+- File metadata is managed in a database, with expired files flagged for deletion or archival to maintain efficiency.
+
+### 8. AI-Powered FAQ Chatbot
+
+- Utilizes natural language processing to answer routine queries with relevant responses, providing a more intuitive user experience.
+- Directs users to specific sections of the playbook when additional details are required, enhancing usability.
+- Offers efficient, round-the-clock assistance by addressing common questions and reducing the need for manual intervention.
+
 ## Project Scope:
 
 This project will focus on the management of student rosters, course requirements, playbooks, checklists, and FAQs. However, it will not cover providing system access to students directly.
