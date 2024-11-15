@@ -13,8 +13,18 @@
     <div id="main-content">
         <div class="container">
             <div class="section">
-                <h2>Course Catalog</h2>
-                
+                <div class="header-with-search">
+                    <h2>Course Catalog</h2>
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            id="course-search" 
+                            class="search-box" 
+                            placeholder="Search courses by number, name, or description..."
+                        >
+                        <button id="clear-search" class="clear-search" title="Clear search">×</button>
+                    </div>
+                </div>
                 <div id="courseTable">
                     <div class="loading">Loading course data...</div>
                 </div>
@@ -65,13 +75,14 @@
                     createCourseTable(courses);
                 }
             });
+            createFilterDropdown();
         });
     </script>
 
-    <script>
-        $(function(){
-            $("#header-nav-placeholder").load("navigation-pane.html");
-        });
-    </script>
+<script>
+    $(function(){
+        $("#header-nav-placeholder").load("navigation-pane.html");
+    });
+</script>
 </body>
 </html>
