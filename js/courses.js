@@ -300,3 +300,70 @@ function deleteCourseFromDB(courseNumber, callback) {
         callback(event.target.errorCode);
     };
 }
+
+// Function to perform search
+function searchCourses(searchTerm) {
+    searchTerm = searchTerm.toLowerCase().trim();
+    
+    getAllCourses((error, courses) => {
+        if (error) {
+            showError(error);
+            return;
+        }
+
+        if (searchTerm === '') {
+            createCourseTable(courses); // Show all courses if search is empty
+            return;
+        }
+
+        const filteredCourses = courses.filter(course => 
+            course.courseNumber.toLowerCase().includes(searchTerm) ||
+            course.courseName.toLowerCase().includes(searchTerm) ||
+            course.courseDescription.toLowerCase().includes(searchTerm)
+        );
+
+        if (filteredCourses.length === 0) {
+            document.getElementById('courseTable').innerHTML = `
+                <div class="error-message">
+                    No courses found matching "${searchTerm}"
+                </div>
+            `;
+        } else {
+            createCourseTable(filteredCourses);
+        }
+    });
+}
+
+// Function to handle search input
+function initializeSearch() {
+    const searchBox = document.getElementById('course-search');
+    const clearButton = document.getElementById('clear-search');
+    let debounceTimer;
+
+    // Search input handler with debounce
+    searchBox.addEventListener('input', (e) => {
+        clearButton.style.display = e.target.value ? 'block' : 'none';
+        
+        // Clear the previous timeout
+        clearTimeout(debounceTimer);
+        
+        // Set a new timeout
+        debounceTimer = setTimeout(() => {
+            searchCourses(e.target.value);
+        }, 300); // Wait 300ms after user stops typing
+    });
+
+    // Clear search handler
+    clearButton.addEventListener('click', () => {
+        searchBox.value = '';
+        clearButton.style.display = 'none';
+        searchCourses(''); // Show all courses
+        searchBox.focus();
+    });
+
+    // Initialize with all courses
+    searchCourses('');
+}
+
+// Initialize search when document is loaded
+document.addEventListener('DOMContentLoaded', initializeSearch);

@@ -127,3 +127,48 @@ tr:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* New styles for search bar */
+.header-with-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.search-box:focus {
+    border-color: #7c1a29;
+    box-shadow: 0 0 5px rgba(157, 34, 53, 0.2);
+}
+.search-box:not(:placeholder-shown) + .clear-search {
+    display: block;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Add position: relative to the search container */
+}
+
+.search-box {
+    width: 100%;
+    padding: 8px 35px 8px 15px;
+    border: 2px solid #9d2235;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+.clear-search {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #9d2235;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: none;
+}
+.clear-search:hover {
+    color: #7c1a29;
+}
