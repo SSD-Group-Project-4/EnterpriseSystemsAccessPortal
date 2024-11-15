@@ -770,14 +770,14 @@ select[name="bulk-action"] {
 }
 
 button[type="submit"] {
-    padding: 4px 8px;
-    font-size: 13px;
-    background-color: var(--success-green);
+    background-color: #9d2235; /* Same background color as Close button */
     color: white;
-    border: none;
-    border-radius: 3px;
     cursor: pointer;
-    height: 26px;
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%; /* Adjust width if needed */
 }
 
 /* Responsive Design */
