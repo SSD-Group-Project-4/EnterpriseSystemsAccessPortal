@@ -23,10 +23,26 @@ concurrency:
 
 jobs:
   # Add additional jobs here!!
-
+  html-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'  
+      - name: Install html-validate
+        run: npm install -g html-validate
+      - name: Run HTML validation
+        run: |
+          html-validate "**/*.html"
+        continue-on-error: true
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
+    needs: html-validate  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
