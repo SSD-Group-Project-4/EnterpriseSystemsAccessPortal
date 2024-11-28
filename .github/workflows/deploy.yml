@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   # Add additional jobs here!!
-  html-validate:
+  html-validate-minify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,10 +38,23 @@ jobs:
         run: |
           html-validate "**/*.html"
         continue-on-error: true
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: '.'      
+          output: 'minified'   
+          add_suffix: false    
+          inclusions: |-       
+            .*css/.*\.css       
+            .*js/.*\.js         
+            .*\.html            
+          exclusions: |-       
+              .*playbooks/.*      
+              .*icons/.*          
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
-    needs: html-validate  # This ensures validation runs before deployment
+    needs: html-validate-minify  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
