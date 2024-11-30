@@ -38,12 +38,23 @@ jobs:
         run: |
           html-validate "**/*.html"
         continue-on-error: true
+  # Add stylelint CSS linting      
   stylelint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: stylelint
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Stylelint
+        run: npm install -g stylelint stylelint-config-standard
+      - name: Run Stylelint
         uses: actions-hub/stylelint@master
+        with:
+          files: '**/*.css'
+        continue-on-error: true
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
