@@ -12,7 +12,6 @@ on:
 jobs:
   # Add additional jobs here!!
 
-  # End additional job steps!!
   html-validate:
     runs-on: ubuntu-latest
     steps:
@@ -28,3 +27,19 @@ jobs:
         run: |
           html-validate "**/*.html"
         continue-on-error: true
+
+  broken-link-check:
+    needs: html-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run Broken Link Checker
+        uses: merlos/broken-links@0.2.2
+        with:
+          url: 'https://ssd-group-project-4.github.io/EnterpriseSystemsAccessPortal/index.html'
+          only-errors: 'true'
+          ignore-file: './check-ignore'
+        continue-on-error: true
+
+  # End additional job steps!!
