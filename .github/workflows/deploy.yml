@@ -48,8 +48,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install Stylelint
-        run: npm install -g stylelint stylelint-config-standard
+      - name: Install dependencies
+        run: |
+            npm install
+            npm install stylelint stylelint-config-standard --save-dev
       - name: Run Stylelint
         uses: actions-hub/stylelint@master
         with:
