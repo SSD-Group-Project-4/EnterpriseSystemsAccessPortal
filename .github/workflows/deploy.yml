@@ -38,10 +38,16 @@ jobs:
         run: |
           html-validate "**/*.html"
         continue-on-error: true
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: stylelint
+        uses: actions-hub/stylelint@master
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
-    needs: html-validate  # This ensures validation runs before deployment
+    needs: [html-validate, stylelint]  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
