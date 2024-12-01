@@ -37,7 +37,7 @@ jobs:
       - name: Run Stylelint
         uses: actions-hub/stylelint@master
         with:
-          files: '**/*.css'
+          files: 'css/**/*.css'
         continue-on-error: true
 
   broken-link-check:
