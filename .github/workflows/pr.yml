@@ -69,7 +69,7 @@ jobs:
         uses: docker://devatherock/minify-js:3.1.0
         with:
           directory: '.'      
-          output: '/tmp'   
+          output: '.'   
           add_suffix: false    
           inclusions: |-       
             .*css/.*\.css       
@@ -81,7 +81,11 @@ jobs:
         # Log the minified file sizes
       - name: Show File Sizes of Minified Files
         run: |
-          echo "File sizes of minified files:"
-          du -h /tmp/css/ /tmp/js/ /tmp/*.html || echo "No minified files found."
+          echo "File sizes of CSS files:"
+          du -h css/ || echo "No CSS files found"
+          echo "File sizes of JS files:"
+          du -h js/ || echo "No JS files found"
+          echo "File sizes of HTML files:"
+          du -h *.html || echo "No HTML files found"
         continue-on-error: true  
   # End additional job steps!!
