@@ -88,4 +88,18 @@ jobs:
           echo "File sizes of HTML files:"
           du -h *.html || echo "No HTML files found"
         continue-on-error: true  
+
+
+  workflow-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Perform CodeQL Analysis
+        uses: rcowsill/workflow-scan-action@v3 
+        
   # End additional job steps!!
