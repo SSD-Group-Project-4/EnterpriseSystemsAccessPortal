@@ -51,12 +51,25 @@ jobs:
             .*\.html            
           exclusions: |-       
               .*playbooks/.*      
-              .*icons/.*          
+              .*icons/.*    
+      # Log the output directory contents
+      - name: List Minified Files
+        run: |
+          echo "Minified files:"
+          ls -R minified
+
+      # Log file size reductions
+      - name: Show File Sizes Before and After Minification
+        run: |
+          echo "Original file sizes:"
+          du -h css/ js/ *.html
+          echo "Minified file sizes:"
+          du -h minified      
   # End additional job steps!!
 
   broken-link-check:
     runs-on: ubuntu-latest
-    needs: html-validate
+    needs: html-validate-minify
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
