@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   # Add additional jobs here!!
-  html-validate-minify:
+  html-validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,37 +39,9 @@ jobs:
           html-validate "**/*.html"
         continue-on-error: true
 
-      - name: HTML/CSS/JS Minifier
-        uses: docker://devatherock/minify-js:3.1.0
-        with:
-          directory: '.'      
-          output: 'minified'   
-          add_suffix: false    
-          inclusions: |-       
-            .*css/.*\.css       
-            .*js/.*\.js         
-            .*\.html            
-          exclusions: |-       
-              .*playbooks/.*      
-              .*icons/.*    
-      # Log the output directory contents
-      - name: List Minified Files
-        run: |
-          echo "Minified files:"
-          ls -R minified
-
-      # Log file size reductions
-      - name: Show File Sizes Before and After Minification
-        run: |
-          echo "Original file sizes:"
-          du -h css/ js/ *.html
-          echo "Minified file sizes:"
-          du -h minified      
-  # End additional job steps!!
-
   broken-link-check:
     runs-on: ubuntu-latest
-    needs: html-validate-minify
+    needs: html-validate
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -98,11 +70,36 @@ jobs:
           only-errors: 'true'
           ignore-file: './check-ignore'
         continue-on-error: true
+        
+  minify-html-css-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: '.'      
+          output: '/tmp'   
+          add_suffix: false    
+          inclusions: |-       
+            .*css/.*\.css       
+            .*js/.*\.js         
+            .*\.html            
+          exclusions: |-       
+              .*playbooks/.*      
+              .*icons/.* 
+      # Log the minified file sizes
+      - name: Show File Sizes of Minified Files
+        run: |
+          echo "File sizes of minified files:"
+          du -h /tmp/css/ /tmp/js/ /tmp/*.html || echo "No minified files found."
+        continue-on-error: true  
 
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
-    needs: [html-validate-minify, broken-link-check]  # This ensures validation runs before deployment
+    needs: [html-validate, broken-link-check, minify-html-css-js]  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
