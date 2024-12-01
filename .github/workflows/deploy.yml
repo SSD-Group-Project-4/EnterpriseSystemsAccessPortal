@@ -70,12 +70,20 @@ jobs:
           only-errors: 'true'
           ignore-file: './check-ignore'
         continue-on-error: true
-        
+
   minify-html-css-js:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: List Source Files
+        run: |
+          echo "CSS files in css/ directory:"
+          ls css/ || echo "No CSS files found"
+          echo "JS files in js/ directory:"
+          ls js/ || echo "No JS files found"
+          echo "HTML files in root:"
+          ls *.html || echo "No HTML files found"
       - name: HTML/CSS/JS Minifier
         uses: docker://devatherock/minify-js:3.1.0
         with:
