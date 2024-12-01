@@ -39,6 +39,18 @@ jobs:
           html-validate "**/*.html"
         continue-on-error: true
 
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Stylelint
+        uses: actions-hub/stylelint@master
+        env:
+          PATTERN: "**/*.css"  # Define the pattern for stylelint to look for CSS files
+        continue-on-error: true
+
   broken-link-check:
     runs-on: ubuntu-latest
     needs: html-validate
@@ -103,7 +115,7 @@ jobs:
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
-    needs: [html-validate, broken-link-check, minify-html-css-js]  # This ensures validation runs before deployment
+    needs: [html-validate, stylelint, broken-link-check, minify-html-css-js]  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
