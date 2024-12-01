@@ -28,6 +28,18 @@ jobs:
           html-validate "**/*.html"
         continue-on-error: true
 
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Stylelint
+        uses: actions-hub/stylelint@master
+        with:
+          files: '**/*.css'
+        continue-on-error: true
+
   broken-link-check:
     runs-on: ubuntu-latest
     needs: html-validate
