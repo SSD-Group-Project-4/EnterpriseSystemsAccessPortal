@@ -71,10 +71,39 @@ jobs:
           ignore-file: './check-ignore'
         continue-on-error: true
 
+  minify-html-css-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: '.'      
+          output: '.'   
+          add_suffix: false    
+          inclusions: |-       
+            .*css/.*\.css       
+            .*js/.*\.js         
+            .*\.html            
+          exclusions: |-       
+              .*playbooks/.*      
+              .*icons/.* 
+      # Log the minified file sizes
+      - name: Show File Sizes after Minification
+        run: |
+          echo "File sizes of CSS files:"
+          du -h css/ || echo "No CSS files found"
+          echo "File sizes of JS files:"
+          du -h js/ || echo "No JS files found"
+          echo "File sizes of HTML files:"
+          du -h *.html || echo "No HTML files found"
+        continue-on-error: true  
+
   # End additional job steps!!
   # Single deploy job since we're just deploying
   deploy:
-    needs: [html-validate, broken-link-check]  # This ensures validation runs before deployment
+    needs: [html-validate, broken-link-check, minify-html-css-js]  # This ensures validation runs before deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
