@@ -38,8 +38,6 @@ jobs:
         uses: actions-hub/stylelint@master
         env:
           PATTERN: "**/*.css"  # Define the pattern for stylelint to look for CSS files
-        with:
-          files: ${{ env.PATTERN }}  # Use the PATTERN environment variable to specify files
         continue-on-error: true
 
   broken-link-check:
