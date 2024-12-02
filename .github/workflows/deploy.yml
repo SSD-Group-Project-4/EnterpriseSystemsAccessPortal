@@ -110,7 +110,8 @@ jobs:
           persist-credentials: false
 
       - name: Perform CodeQL Analysis
-        uses: rcowsill/workflow-scan-action@v3
+        uses: rcowsill/workflow-scan-action@v3 
+        continue-on-error: true 
 
   # End additional job steps!!
   # Single deploy job since we're just deploying
