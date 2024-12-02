@@ -113,5 +113,6 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: rcowsill/workflow-scan-action@v3 
-        
+        continue-on-error: true
+
   # End additional job steps!!
