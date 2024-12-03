@@ -97,4 +97,54 @@ jobs:
         uses: rcowsill/workflow-scan-action@v3 
         continue-on-error: true
 
+  #Implementing Optimize images using Sharp Add lazy loading to images Set up performance monitoring with Lighthouse
+  image-optimization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.x'
+      
+      - name: Install Image Optimization Tools
+        run: |
+          npm install -g sharp imagemin imagemin-jpegtran imagemin-pngquant
+      
+      - name: Run Image Optimization
+        run: |
+          find . -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) -exec sh -c '
+            sharp --input "$1" --quality 85 --output "${1%.*}_optimized.${1##*.}"
+          ' sh {} \;
+        continue-on-error: true
+
+  lazy-loading-implementation:
+    runs-on: ubuntu-latest
+    needs: image-optimization
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Add Lazy Loading
+        run: |
+          find . -type f -name "*.html" -exec sed -i 's/<img/<img loading="lazy"/g' {} +
+        continue-on-error: true
+
+  performance-monitoring:
+    runs-on: ubuntu-latest
+    needs: lazy-loading-implementation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+      
+      - name: Run Performance Tests
+        run: |
+          lighthouse https://ssd-group-project-4.github.io/EnterpriseSystemsAccessPortal/index.html --output json --output-path ./lighthouse-report.json
+        continue-on-error: true
+        
   # End additional job steps!!
