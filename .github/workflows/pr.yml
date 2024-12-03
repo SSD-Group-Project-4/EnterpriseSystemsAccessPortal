@@ -47,7 +47,7 @@ jobs:
         id: link-report
         uses: celinekurpershoek/link-checker@v1.0.2
         with:
-          url: "https://your-deployment-url.com"
+          url: "https://ssd-group-project-4.github.io/EnterpriseSystemsAccessPortal/index.html"
           honorRobotExclusions: false
           recursiveLinks: false
       - name: Get the result
